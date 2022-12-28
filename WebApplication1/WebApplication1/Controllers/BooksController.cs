@@ -1,4 +1,5 @@
-﻿using Application.Features.BooksFeatures.Commands;
+﻿using Application.Dto;
+using Application.Features.BooksFeatures.Commands;
 using Application.Features.BooksFeatures.Queries;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Controllers;
@@ -21,6 +22,14 @@ namespace WebApi.Controllers.v1 {
     [HttpGet]
     public async Task<IActionResult> GetAll() {
       return Ok(await Mediator.Send(new GetAllBooksQuery()));
+    }
+    /// <summary>
+    /// Gets all Products.
+    /// </summary>
+    /// <returns></returns>
+    [HttpPut("find")]
+    public async Task<IActionResult> GetAllFilter(SearchFiltersDto searchFilters) {
+      return Ok(await Mediator.Send(new GetBooksQuery { SearchFilters = searchFilters }));
     }
     /// <summary>
     /// Gets Product Entity by Id.
@@ -46,11 +55,8 @@ namespace WebApi.Controllers.v1 {
     /// <param name="id"></param>
     /// <param name="command"></param>
     /// <returns></returns>
-    [HttpPut("[action]")]
-    public async Task<IActionResult> Update(int id, UpdateBookCommand command) {
-      if (id != command.Book.Id) {
-        return BadRequest();
-      }
+    [HttpPut]
+    public async Task<IActionResult> Update(UpdateBookCommand command) {
       return Ok(await Mediator.Send(command));
     }
   }

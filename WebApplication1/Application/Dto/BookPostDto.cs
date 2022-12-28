@@ -1,8 +1,7 @@
-﻿using Domain.Common;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Domain.Entities {
-  public class Book : IEntityBase {
-    public int Id { get; set; }
+namespace Application.Dto {
+  public class BookPostDto {
     public string? Name { get; set; }
     public string? Publisher { get; set; }
     public string? Notice { get; set; }

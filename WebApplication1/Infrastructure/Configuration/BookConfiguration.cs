@@ -25,9 +25,9 @@ namespace Infrastructure.Configuration
                 .HasColumnName("notice")
                 .HasMaxLength(250);
 
-            builder.Property(a => a.ImagePath)
-                .HasColumnName("imagepath")
-                .HasMaxLength(260);
+            builder.Property(a => a.IsRead)
+                .HasColumnName("isread")
+                .HasColumnType("bit");
         }
     }
 }

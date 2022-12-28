@@ -10,12 +10,16 @@ namespace Infrastructure.Context {
 
     public DbSet<Book> Books { get; set; }
 
-
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
       base.OnModelCreating(modelBuilder);
 
       modelBuilder.ApplyConfiguration(new BookConfiguration());
+    }
+
+    protected override void OnConfiguring
+       (DbContextOptionsBuilder optionsBuilder) {
+      optionsBuilder.UseInMemoryDatabase(databaseName: "BooksDb");
     }
 
     public async Task<int> SaveChangesAsync() {

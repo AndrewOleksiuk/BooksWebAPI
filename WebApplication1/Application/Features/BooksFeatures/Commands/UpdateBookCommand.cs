@@ -1,10 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.Dto;
+using Application.Interfaces;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.BooksFeatures.Commands {
   public class UpdateBookCommand : IRequest<int> {
-    public Book Book { get; set; }
+    public BookDto Book { get; set; }
 
     public class UpdateProductCommandHandler : IRequestHandler<UpdateBookCommand, int> {
       private readonly IApplicationDbContext _context;
@@ -20,7 +21,7 @@ namespace Application.Features.BooksFeatures.Commands {
           book.Name = command.Book.Name;
           book.Notice = command.Book.Notice;
           book.Publisher = command.Book.Publisher;
-          book.ImagePath = command.Book.ImagePath;
+          book.IsRead = command.Book.IsRead;
           await _context.SaveChangesAsync();
           return book.Id;
         }
