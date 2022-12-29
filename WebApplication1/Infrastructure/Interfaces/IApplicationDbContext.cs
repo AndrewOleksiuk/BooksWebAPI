@@ -2,9 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Interfaces {
-  public interface IApplicationDbContext
-    {
-        DbSet<Book> Books { get; set; }
-        Task<int> SaveChangesAsync();
-    }
+  public interface IApplicationDbContext {
+    DbSet<Book> Books { get; set; }
+    Task<int> SaveChangesAsync();
+  }
 }

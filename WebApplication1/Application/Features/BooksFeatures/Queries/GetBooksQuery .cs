@@ -24,7 +24,7 @@ namespace Application.Features.BooksFeatures.Queries {
         ).ToListAsync();
 
         if (query.SearchFilters.AlphabetOrder) {
-          booksList.OrderBy(b => b.Name);
+          booksList = booksList.OrderBy(b => b.Name).ToList();
         }
 
         if (booksList == null) {

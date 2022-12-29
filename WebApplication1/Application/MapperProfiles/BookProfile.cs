@@ -8,6 +8,8 @@ namespace Application.MapperProfilers {
 
       CreateMap<Book, BookDto>();
       CreateMap<BookDto, Book>();
+      CreateMap<Book, BookPostDto>();
+      CreateMap<BookPostDto, Book>();
     }
   }
 }

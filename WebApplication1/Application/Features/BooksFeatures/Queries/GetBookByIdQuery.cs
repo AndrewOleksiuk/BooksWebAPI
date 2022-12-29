@@ -16,11 +16,11 @@ namespace Application.Features.BooksFeatures.Queries {
       }
 
       public async Task<Book> Handle(GetBookByIdQuery query, CancellationToken cancellationToken) {
-        var product = _context.Books.Where(a => a.Id == query.Id).FirstOrDefault();
-        if (product == null) {
+        var book = _context.Books.Where(a => a.Id == query.Id).FirstOrDefault();
+        if (book == null) {
           return null;
         }
-        return product;
+        return book;
       }
     }
   }

@@ -12,7 +12,9 @@ namespace Application.Features.BooksFeatures.Commands {
       }
       public async Task<int> Handle(DeleteBookByIdCommand command, CancellationToken cancellationToken) {
         var product = await _context.Books.Where(a => a.Id == command.Id).FirstOrDefaultAsync();
-        if (product == null) return default;
+        if (product == null) {
+          return default;
+        }
         _context.Books.Remove(product);
         await _context.SaveChangesAsync();
         return product.Id;
